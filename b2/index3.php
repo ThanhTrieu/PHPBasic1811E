@@ -69,6 +69,64 @@ echo md5($password); // ma hoa chuoi - khong quan tam dau vao cua chuoi dai hay 
 echo "<br/>";
 $password2 = '123';
 echo md5($password2);
+echo "<br/>";
+
+/****** Tiep cac ham lam viec voi chuoi ************/
+
+$myScript = "<script>alert('Hello you')</script>";
+//echo $myScript;
+echo "<br/>";
+$myTitle = '<h1><i>lphp1811e</i></h1>';
+echo $myTitle;
+echo "<br/>";
+
+$myScript = htmlentities($myScript);
+echo $myScript;
+echo "<br/>";
+$myTitle = htmlentities($myTitle);
+echo $myTitle;
+echo "<br/>";
+
+echo html_entity_decode($myTitle);
+echo "<br/>";
+
+$mySapo = "<h1><u>This is tag HTML</u></h1>";
+echo strip_tags($mySapo,'<u>');
+echo "<br/>";
+
+$myString7 = 'PHP la ngon ngu server side';
+$subString = substr($myString7, 7, 8);
+echo $subString;
+echo "<br/>";
+
+$myString8 = 'khong giong php, js chuyen xu ly ben phia client side';
+$subString2 = strstr($myString8, 'js');
+echo $subString2;
+echo "<br/>";
+
+$pos = strpos($myString8, 'php');
+if($pos !== false){
+	echo $pos;
+} else {
+	echo "khong ton tai trong chuoi";
+}
+echo "<br/>";
+
+$myString8 = "$luong cua dev moi ra truong tam khoang 300$";
+// xoa bo di ki tu dau va cuoi chuoi truyen vao
+// truong hop khong truyen gi thi no se hieu la xoa khoang trang
+echo trim($myString8);
+echo "<br/>";
+//echo rtrim($myString8,'$');
+echo ltrim($myString8,'$');
+
+
+
+
+
+
+
+
 
 
 
