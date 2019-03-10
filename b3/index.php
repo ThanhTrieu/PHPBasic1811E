@@ -122,6 +122,7 @@ $numberArr = [1,2,3,4,5,6,7,8,9];
 $result = [];
 foreach($numberArr as $k => $i){
 	if($i % 2 != 0){
+		
 		$result[] = $i;
 	}
 }
