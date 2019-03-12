@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1); 
 // cac ham lam viec voi mang trong php
 // cac ham co san
 $infoST = [
@@ -104,4 +105,76 @@ $childArr = array_slice($myNumber, 4, 3, true);
 // true : giu nguyen key tu mang cha truyen xuong
 echo "<pre>";
 print_r($childArr);
+echo "<br/>";
 
+/****** Sap xep mang PHP *******/
+//1 sap xep dua vao gia tri(value)
+$randomArr = [100,1,5,10,11,3,4,9,8,2,7];
+//arsort($randomArr);// sap xep giam dan
+asort($randomArr); // sap xem tang dan
+echo "<pre>";
+print_r($randomArr);
+echo "<br/>";
+
+//2 sap xep dua vao key nam trong mang
+$randomArr2 = [
+	'z' => 100,
+	'a' => 1,
+	'b' => 2,
+	'f' => 3,
+	'y' => 5
+];
+//krsort($randomArr2); // giam dan
+ksort($randomArr2); // tang dan
+echo "<pre>";
+print_r($randomArr2);
+echo "<br/>";
+
+// khong su dung ham de sap xep
+// tu xay dung 1 ham de sap xep mang
+$randomArr3 = [100,1,5,10,11,3,4,9,8,2,7];
+function sapXepMangPHP($arr)
+{
+	/*
+	foreach($arr as $key => $val){
+		foreach($arr as $key2 => $item){
+			if($arr[$key] < $arr[$key2]){
+				$tmp = $arr[$key];
+				$arr[$key] = $arr[$key2];
+				$arr[$key2] = $tmp;
+			}
+		}
+	}
+	*/
+	$count = count($arr); // dem so luong phan tu nam trong mang
+	for($i =0; $i<= $count; $i++){
+		for($j = $i+1; $j < $count; $j++){
+			if($arr[$i] > $arr[$j]){
+				$tmp = $arr[$i];
+				$arr[$i] = $arr[$j];
+				$arr[$j] = $tmp;
+			}
+		}
+	}
+	return $arr;
+}
+echo "<pre>";
+print_r(sapXepMangPHP($randomArr3));
+echo "<br/>";
+
+// tim kiem phan tu nam trong mang ma khong can dung ham co san
+// tim kiem tuyen tinh
+$randomArr4 = [100,1,5,10,11,3,4,9,8,2,7];
+function searchElementInArray(int $a, array $arr): bool
+{
+	$flag = false;
+	foreach ($arr as $key => $value) {
+		if($value == $a){
+			$flag = true;
+			break;
+		}
+	}
+	return $flag;
+}
+$checking = searchElementInArray(11, $randomArr4);
+var_dump($checking);
