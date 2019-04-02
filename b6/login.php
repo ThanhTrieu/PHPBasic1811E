@@ -1,3 +1,9 @@
+<?php
+	session_start();
+	require 'checkLogined.php';
+	redirectToHome();
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,6 +19,9 @@
 		<br><br>
 		<label for="pass">password</label>
 		<input type="password" name="pass" id="pass">
+		<br><br>
+		<label for="remember">Remember me</label>
+		<input type="checkbox" name="remember" id="remember">
 		<br><br>
 		<button type="submit" name="btnLogin">Login</button>
 	</form>
