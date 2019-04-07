@@ -11,7 +11,8 @@ if(isset($_SESSION['cart'])){
 
 	if(isset($_SESSION['cart'][$idCart])){
 		$_SESSION['cart'][$idCart]['qty'] = $qty;
-		$money = $qty * $_SESSION['cart'][$idCart]['price'];
+		$money = number_format($qty * $_SESSION['cart'][$idCart]['price']);
+		
 		// json_encode :  bien mang ve chuoi Json - object trong js
 		echo json_encode(['qty' => $qty,'money' => $money]);
 	} else {
