@@ -25,7 +25,7 @@ $cart = $_SESSION['cart'] ?? [];
 				<th>QTY</th>
 				<th>Price</th>
 				<th>Money</th>
-				<th colspan="2" width="5%">Action</th>
+				<th colspan="2" width="10%">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -42,7 +42,7 @@ $cart = $_SESSION['cart'] ?? [];
 					<td>
 						<?= number_format($item['price']) ?>
 					</td>
-					<td>
+					<td id="m_<?= $item['id'];?>">
 						<?= number_format($item['qty']*$item['price']); ?>
 					</td>
 					<td>
@@ -73,7 +73,17 @@ $cart = $_SESSION['cart'] ?? [];
 							self.text('Loading ...');
 						},
 						success: function(result){
-
+							self.text('Update');
+							
+							result = $.trim(result);
+							if(result === 'FAIL'){
+								alert('can not update');
+							} else {
+								// tai vi ben phia server tra ve 1 chuoi json php chinh la object trong js thi can su dung parseJSON
+								let obj = $.parseJSON(result);
+								$('#qty_'+idCart).val(obj.qty);
+								$('#m_'+idCart).text(obj.money);
+							}
 						}
 					});
 				}
